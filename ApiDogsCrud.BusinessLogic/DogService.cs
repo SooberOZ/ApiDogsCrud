@@ -34,11 +34,7 @@ namespace ApiDogsCrud.BusinessLogic
         {
             var dog = _mapper.Map<Dog>(dogDto);
 
-            await _validator.ValidateAsync(dog, options =>
-            {
-                options.IncludeRuleSets("default");
-                options.ThrowOnFailures();
-            });
+            await _validator.ValidateAndThrowAsync(dog);
 
             await _dogRepository.AddAsync(dog);
         }

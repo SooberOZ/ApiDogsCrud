@@ -7,17 +7,15 @@ namespace ApiDogsCrud.BusinessLogic.Validators
 {
     public class DogValidator : AbstractValidator<Dog>
     {
-        private readonly IRepository<Dog> _repository;
 
         public DogValidator(IRepository<Dog> repository)
         {
-            _repository = repository;
 
             RuleFor(dog => dog.Name)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                 .WithMessage("Dog name must be provided.")
-                .MustAsync(async (x, _) => !await _repository.ExistAsync(new GetDogByNameSpecification(x)))
+                .MustAsync(async (x, _) => !await repository.ExistAsync(new GetDogByNameSpecification(x)))
                 .WithMessage("Dog with the provided name already exists.");
 
             RuleFor(dog => dog.Color)

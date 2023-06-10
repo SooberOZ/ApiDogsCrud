@@ -31,7 +31,7 @@ namespace ApiDogsCrud.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -42,10 +42,6 @@ namespace ApiDogsCrud.WebApi.Controllers
             {
                 await _dogService.CreateDogAsync(dog);
                 return Ok("Dog created successfully");
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {

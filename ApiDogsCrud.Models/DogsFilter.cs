@@ -6,7 +6,7 @@ namespace ApiDogsCrud.Models
     public class DogsFilter : IDogFilter, ISortableFilter<FulfillmentDogSortFields>
 
     {
-        public int PageNumber { get; set; } = 2;
+        public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
 
         public SortDirection Direction { get; set; }

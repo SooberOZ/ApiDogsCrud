@@ -1,5 +1,5 @@
-﻿using ApiDogsCrud.BusinessLogic.Models;
-using ApiDogsCrud.DataLayer.Entity;
+﻿using ApiDogsCrud.DataLayer.Entity;
+using ApiDogsCrud.Models;
 using AutoMapper;
 
 namespace ApiDogsCrud.BusinessLogic.MappingProfile
@@ -10,6 +10,9 @@ namespace ApiDogsCrud.BusinessLogic.MappingProfile
         {
             CreateMap<Dog, DogDto>();
             CreateMap<DogDto, Dog>();
+
+            CreateMap<Dog, DogDto>()
+                .ReverseMap();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ApiDogsCrud.BusinessLogic.Models
+﻿namespace ApiDogsCrud.Models
 {
     public class DogDto
     {

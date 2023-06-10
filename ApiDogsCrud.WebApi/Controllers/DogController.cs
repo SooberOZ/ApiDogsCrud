@@ -1,5 +1,4 @@
-﻿using ApiDogsCrud.BusinessLogic.Models;
-using ApiDogsCrud.Contracts;
+﻿using ApiDogsCrud.Contracts;
 using ApiDogsCrud.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +8,9 @@ namespace ApiDogsCrud.WebApi.Controllers
     [Route("[controller]")]
     public class DogController : ControllerBase
     {
-        private readonly IDogService<DogDto> _dogService;
+        private readonly IDogService _dogService;
 
-        public DogController(IDogService<DogDto> dogService)
+        public DogController(IDogService dogService)
         {
             _dogService = dogService;
         }

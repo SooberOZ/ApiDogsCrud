@@ -6,7 +6,6 @@ namespace ApiDogsCrud.DataLayer.Specification
     public abstract class BaseSpecification<T> : ISpecification<T>
     {
         public List<Expression<Func<T, bool>>> Criterias { get; private set; } = new List<Expression<Func<T, bool>>>();
-        public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
         public Expression<Func<T, object>> OrderBy { get; private set; }
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
         public Expression<Func<T, object>> GroupBy { get; private set; }
@@ -15,11 +14,6 @@ namespace ApiDogsCrud.DataLayer.Specification
         public int Skip { get; private set; }
         public bool IsPagingEnabled { get; private set; }
 
-        protected void ApplyIncludeList(IEnumerable<Expression<Func<T, object>>> includes) =>
-         Includes.AddRange(includes);
-
-        protected void AddInclude(Expression<Func<T, object>> includeExpression) =>
-         Includes.Add(includeExpression);
 
         protected void AddOrderBy(Expression<Func<T, object>> orderByExpression) =>
          OrderBy = orderByExpression;
@@ -36,7 +30,7 @@ namespace ApiDogsCrud.DataLayer.Specification
         protected void AddGroupBy(Expression<Func<T, object>> groupByExpression) =>
          GroupBy = groupByExpression;
 
-        protected void ApplyPaging(int skip, int take)
+        protected void AddPaging(int skip, int take)
         {
             Skip = skip;
             Take = take;

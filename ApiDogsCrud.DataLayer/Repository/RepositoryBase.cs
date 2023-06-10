@@ -25,7 +25,7 @@ namespace ApiDogsCrud.DataLayer.Repository
             await _dbContext.Set<T>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }
-        public async Task<T> FindOneAsync(ISpecification<T> spec)
+        public async Task<T?> FindOneAsync(ISpecification<T> spec)
         {
             var specificationResult = GetQuery(_dbContext.Set<T>(), spec);
 
@@ -49,7 +49,6 @@ namespace ApiDogsCrud.DataLayer.Repository
                 query = query.Where(combinedCriteria);
             }
 
-            query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
 
             if (specification.OrderBy != null)
             {
@@ -58,11 +57,6 @@ namespace ApiDogsCrud.DataLayer.Repository
             else if (specification.OrderByDescending != null)
             {
                 query = query.OrderByDescending(specification.OrderByDescending);
-            }
-
-            if (specification.GroupBy != null)
-            {
-                query = query.GroupBy(specification.GroupBy).SelectMany(x => x);
             }
 
             if (specification.IsPagingEnabled)

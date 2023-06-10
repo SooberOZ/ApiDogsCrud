@@ -2,9 +2,9 @@
 
 namespace ApiDogsCrud.Contracts
 {
-    public interface IDogService<DogDto>
+    public interface IDogService
     {
-        public Task<IEnumerable<DogDto>> GetDogsAsync(DogsFilter filter);
-        public Task CreateDogAsync(DogDto dog);
+        Task<IEnumerable<DogDto>> GetDogsAsync(DogsFilter filter);
+        Task CreateDogAsync(DogDto dog);
     }
 }

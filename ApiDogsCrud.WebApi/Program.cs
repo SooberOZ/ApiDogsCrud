@@ -1,6 +1,5 @@
 using ApiDogsCrud.BusinessLogic;
 using ApiDogsCrud.BusinessLogic.MappingProfile;
-using ApiDogsCrud.BusinessLogic.Models;
 using ApiDogsCrud.BusinessLogic.Validators;
 using ApiDogsCrud.Contracts;
 using ApiDogsCrud.DataLayer;
@@ -23,7 +22,7 @@ namespace ApiDogsCrud.WebApi
             builder.Services.AddDbContext<DogDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddScoped<IDogService<DogDto>, DogService>();
+            builder.Services.AddScoped<IDogService, DogService>();
             builder.Services.AddScoped<IRepository<Dog>, RepositoryBase<Dog>>();
             builder.Services.AddScoped<IValidator<Dog>, DogValidator>();
             builder.Services.AddAutoMapper(typeof(DogService));

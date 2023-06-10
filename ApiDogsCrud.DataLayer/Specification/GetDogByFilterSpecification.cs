@@ -10,7 +10,7 @@ namespace ApiDogsCrud.DataLayer.Specification
         public GetDogByFilterSpecification(DogsFilter filter)
         {
             ApplySorting(filter.Direction, filter.OrderBy);
-            ApplyPaging(filter.PageSize * (filter.PageNumber - 1), filter.PageSize);
+            AddPaging(filter.PageSize * (filter.PageNumber - 1), filter.PageSize);
         }
         private void ApplySorting(SortDirection sortDirection, FulfillmentDogSortFields orderBy)
         {

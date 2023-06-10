@@ -1,5 +1,4 @@
-﻿using ApiDogsCrud.BusinessLogic.Models;
-using ApiDogsCrud.Contracts;
+﻿using ApiDogsCrud.Contracts;
 using ApiDogsCrud.DataLayer.Entity;
 using ApiDogsCrud.DataLayer.Specification;
 using ApiDogsCrud.Models;
@@ -8,7 +7,7 @@ using FluentValidation;
 
 namespace ApiDogsCrud.BusinessLogic
 {
-    public class DogService : IDogService<DogDto>
+    public class DogService : IDogService
     {
         private readonly IRepository<Dog> _dogRepository;
         private readonly IValidator<Dog> _validator;

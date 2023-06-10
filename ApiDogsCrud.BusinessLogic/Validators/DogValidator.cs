@@ -30,12 +30,5 @@ namespace ApiDogsCrud.BusinessLogic.Validators
                .GreaterThanOrEqualTo(1)
                .WithMessage("Dog weight must be a non-negative value or null.");
         }
-
-        private async Task<bool> BeUniqueNameAsync(Dog dog, CancellationToken cancellationToken)
-        {
-            var specification = new GetDogByNameSpecification(dog.Name);
-            var exists = await _repository.ExistAsync(specification);
-            return !exists;
-        }
     }
 }

@@ -11,17 +11,21 @@ namespace ApiDogsCrud.BusinessLogic
     {
         private readonly IRepository<Dog> _dogRepository;
         private readonly IValidator<Dog> _validator;
+        private readonly IValidator<DogsFilter> _filterValidator;
         private readonly IMapper _mapper;
 
-        public DogService(IRepository<Dog> dogRepository, IValidator<Dog> validator, IMapper mapper)
+        public DogService(IRepository<Dog> dogRepository, IValidator<Dog> validator, IValidator<DogsFilter> filterValidator, IMapper mapper)
         {
             _dogRepository = dogRepository;
             _validator = validator;
+            _filterValidator = filterValidator;
             _mapper = mapper;
         }
 
         public async Task<IEnumerable<DogDto>> GetDogsAsync(DogsFilter filter)
         {
+            await _filterValidator.ValidateAndThrowAsync(filter);
+
             var specification = new GetDogByFilterSpecification(filter);
             var dogs = await _dogRepository.GetAsync(specification);
 

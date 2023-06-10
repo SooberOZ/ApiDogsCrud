@@ -5,6 +5,7 @@ using ApiDogsCrud.Contracts;
 using ApiDogsCrud.DataLayer;
 using ApiDogsCrud.DataLayer.Entity;
 using ApiDogsCrud.DataLayer.Repository;
+using ApiDogsCrud.Models;
 using AspNetCoreRateLimit;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace ApiDogsCrud.WebApi
             builder.Services.AddScoped<IDogService, DogService>();
             builder.Services.AddScoped<IRepository<Dog>, RepositoryBase<Dog>>();
             builder.Services.AddScoped<IValidator<Dog>, DogValidator>();
+            builder.Services.AddScoped<IValidator<DogsFilter>, DogsFilterValidator>();
             builder.Services.AddAutoMapper(typeof(DogService));
             builder.Services.AddAutoMapper(typeof(DogMappingProfile));
 

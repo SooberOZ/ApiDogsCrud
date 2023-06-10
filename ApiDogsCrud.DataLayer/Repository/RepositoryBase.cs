@@ -13,7 +13,7 @@ namespace ApiDogsCrud.DataLayer.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<T>> GetDogsAsync(ISpecification<T> spec)
+        public async Task<IEnumerable<T>> GetAsync(ISpecification<T> spec)
         {
             var query = GetQuery(_dbContext.Set<T>(), spec);
             var entities = await query.ToListAsync();
@@ -62,7 +62,7 @@ namespace ApiDogsCrud.DataLayer.Repository
             if (specification.IsPagingEnabled)
             {
                 query = query
-                    .Skip(specification.Skip - 1)
+                    .Skip(specification.Skip)
                     .Take(specification.Take);
             }
 

@@ -23,7 +23,7 @@ namespace ApiDogsCrud.BusinessLogic
         public async Task<IEnumerable<DogDto>> GetDogsAsync(DogsFilter filter)
         {
             var specification = new GetDogByFilterSpecification(filter);
-            var dogs = await _dogRepository.GetDogsAsync(specification);
+            var dogs = await _dogRepository.GetAsync(specification);
 
             var dogDtos = _mapper.Map<IEnumerable<DogDto>>(dogs);
 

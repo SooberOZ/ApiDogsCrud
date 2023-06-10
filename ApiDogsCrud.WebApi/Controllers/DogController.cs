@@ -31,7 +31,7 @@ namespace ApiDogsCrud.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred while retrieving dogs: {ex.Message}");
+                return BadRequest(ex);
             }
         }
 
@@ -49,7 +49,7 @@ namespace ApiDogsCrud.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred while creating a dog: {ex.Message}");
+                return BadRequest(ex.Message);
             }
         }
     }

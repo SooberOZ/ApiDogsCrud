@@ -8,9 +8,6 @@ namespace ApiDogsCrud.BusinessLogic.MappingProfile
     {
         public DogMappingProfile()
         {
-            CreateMap<Dog, DogDto>();
-            CreateMap<DogDto, Dog>();
-
             CreateMap<Dog, DogDto>()
                 .ReverseMap();
         }

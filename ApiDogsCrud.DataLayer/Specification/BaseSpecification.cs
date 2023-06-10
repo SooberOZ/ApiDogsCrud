@@ -8,7 +8,6 @@ namespace ApiDogsCrud.DataLayer.Specification
         public List<Expression<Func<T, bool>>> Criterias { get; private set; } = new List<Expression<Func<T, bool>>>();
         public Expression<Func<T, object>> OrderBy { get; private set; }
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
-        public Expression<Func<T, object>> GroupBy { get; private set; }
 
         public int Take { get; private set; }
         public int Skip { get; private set; }
@@ -26,9 +25,6 @@ namespace ApiDogsCrud.DataLayer.Specification
 
         protected void AddCriteria(IEnumerable<Expression<Func<T, bool>>> criteria) =>
          Criterias.AddRange(criteria);
-
-        protected void AddGroupBy(Expression<Func<T, object>> groupByExpression) =>
-         GroupBy = groupByExpression;
 
         protected void AddPaging(int skip, int take)
         {
